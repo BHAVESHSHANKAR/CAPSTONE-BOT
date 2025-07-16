@@ -2,8 +2,10 @@ import os
 from flask import Flask, request, jsonify
 import requests
 import dotenv
+from flask_cors import CORS
 # Initialize the Flask application
 app = Flask(__name__)
+CORS(app)
 dotenv.load_dotenv()  # Load environment variables from .env file
 # --- Configuration ---
 # Get configuration from environment variables
@@ -25,7 +27,7 @@ Do not answer questions outside of your scope.
 """
 @app.route('/')
 def index():
-    return "Welcome to the NVIDIA AI Chatbot! Use the /ask endpoint to ask questions."
+    return "Welcome to the AI Chatbot related to blockchain, security, cybersecurity, and technology! Use the /ask endpoint to ask questions."
 # --- API Endpoint for Chatting ---
 @app.route('/ask', methods=['POST'])
 def ask_agent():
